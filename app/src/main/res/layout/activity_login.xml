@@ -103,6 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00000000"
+            android:onClick="registerUser"
             android:text="New User? SIGN UP"
             android:elevation="0dp"
             android:layout_margin="5dp"
