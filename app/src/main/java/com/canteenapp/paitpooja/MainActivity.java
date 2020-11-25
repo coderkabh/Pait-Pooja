@@ -30,5 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
         topAnim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
+
+        image = findViewById(R.id.imageView2);;
+        logo = findViewById(R.id.textView);
+        slogan = findViewById(R.id.textView2);
+
     }
 }
