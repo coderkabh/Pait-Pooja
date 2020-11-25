@@ -34,7 +34,7 @@
                     android:layout_width="332dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:background="#FF5722"
+                    android:background="#000000"
                     android:fontFamily="@font/bigshot_one"
                     android:gravity="center"
                     android:text="ITEM 1"
