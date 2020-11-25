@@ -94,7 +94,8 @@
             android:fontFamily="@font/antic"
             android:text="LOG IN"
             android:id="@+id/loginBtn"
-            android:textColor="#000"/>
+            android:textColor="#000"
+            android:onClick="loginBtn"/>
 
         <Button
             android:id="@+id/Sign_btn"

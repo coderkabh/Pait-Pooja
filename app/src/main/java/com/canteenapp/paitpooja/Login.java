@@ -60,4 +60,70 @@ public class Login extends AppCompatActivity {
         }
 
     }
+    public void loginBtn(View view) {
+
+        if (!validateRollNumber() | !validatePassword()) {
+            return;
+        }
+        else {
+            isUser();
+        }
+
+    }
+
+    private void isUser() {
+        final String userEnteredRollNumber = rollNumber.getEditText().getText().toString().trim();
+        final String userEnteredPassword = password.getEditText().getText().toString().trim();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
+        Query checkUser = reference.orderByChild("rollNumber").equalTo(userEnteredRollNumber);
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.exists()){
+
+                    rollNumber.setError(null);
+                    rollNumber.setErrorEnabled(false);
+
+                    String passwordFromDB = snapshot.child(userEnteredRollNumber).child("password").getValue(String.class);
+
+                    if (passwordFromDB.equals(userEnteredPassword)) {
+                        rollNumber.setError(null);
+                        rollNumber.setErrorEnabled(false);
+                        String nameFromDB = snapshot.child(userEnteredPassword).child("name").getValue(String.class);
+                        String rollNumberFromDB = snapshot.child(userEnteredPassword).child("rollNumber").getValue(String.class);
+                        String phoneNumberFromDB = snapshot.child(userEnteredPassword).child("phoneNumber").getValue(String.class);
+                        String eMailFromDB = snapshot.child(userEnteredPassword).child("eMail").getValue(String.class);
+
+                        Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(getApplicationContext(), DashboardFirstActivity.class);
+
+                        intent.putExtra("name",nameFromDB);
+                        intent.putExtra("rollNumber",rollNumberFromDB);
+                        intent.putExtra("eMail",eMailFromDB);
+                        intent.putExtra("phoneNumber",phoneNumberFromDB);
+                        intent.putExtra("password",passwordFromDB);
+
+                        startActivity(intent);
+                        finish();
+                    }
+                    else {
+                        password.setError("Wrong Password");
+                        password.requestFocus();
+                    }
+                }
+                else {
+                    rollNumber.setError("No such roll number exist");
+                    rollNumber.requestFocus();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }
