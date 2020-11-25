@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.canteenapp.paitpooja.dashboard.DashboardFirstActivity;
+import com.canteenapp.paitpooja.userdata.User;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -77,6 +78,7 @@ public class SignUp extends AppCompatActivity {
 /*
                 String gender = reggender.getEditText().getText().toString();
 */
+
                 User user = new User(name, rollNumber, eMail, phoneNumber, password);
                 reference.child(rollNumber).setValue(user);
                 Toast.makeText(SignUp.this,"Registration Successful",Toast.LENGTH_SHORT).show();
@@ -88,6 +90,56 @@ public class SignUp extends AppCompatActivity {
         });
 
     }
+
+    private Boolean validateName() {
+        String val1 = regName.getEditText().getText().toString().trim();
+
+        if (val1.isEmpty()) {
+            regName.setError("Field cannot be empty");
+            return false;
+        }
+        else {
+            regName.setError(null);
+            regName.setErrorEnabled(false);
+            return true;
+        }
+    }
+
+
+    private Boolean validateRollNumber() {
+        String val2 = regRollNumber.getEditText().getText().toString();
+
+        if(val2.length()!=9) {
+            regRollNumber.setError("Invalid Roll Number");
+            return false;
+        }
+        else {
+            regRollNumber.setError(null);
+            regRollNumber.setErrorEnabled(false);
+            return true;
+        }
+    }
+
+
+    private Boolean validateEmail() {
+        String val3 = regEmail.getEditText().getText().toString();
+        String emailPattern = "[a-zA-Z0-9._-]+@[gla]+\\.+[a][c]+\\.+[i][n]+";
+
+        if (val3.isEmpty()) {
+            regEmail.setError("Field cannot be empty");
+            return false;
+        }
+        else if(!val3.matches(emailPattern)) {
+            regEmail.setError("Invalid email address");
+            return false;
+        }
+        else {
+            regEmail.setError(null);
+            return true;
+        }
+    }
+
+
 
     private Boolean validatePhoneNumber() {
         String val4 = regPhoneNumber.getEditText().getText().toString();
