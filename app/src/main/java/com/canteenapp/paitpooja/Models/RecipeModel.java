@@ -3,7 +3,7 @@ package com.canteenapp.paitpooja.Models;
 
 public class RecipeModel {
 
-  /*  int pic;    //image is stored in the form of binary digits. so its datatype has been taken as int here.
+    int pic;    //image is stored in the form of binary digits. so its datatype has been taken as int here.
 
     String text;
     //String cartButton;
@@ -20,7 +20,7 @@ public class RecipeModel {
     public void setPic(int pic) {
         this.pic = pic;
     }
-
+/*
     //public String getCartButton() {
     //return cartButton;
     // }
