@@ -9,12 +9,12 @@
     android:background="@drawable/bgimg"
     android:padding="20dp">
 
-    <!--<ImageView
+    <ImageView
         android:id="@+id/Logo_image"
         android:transitionName="logo_image_trans"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/logo" />-->
+        android:src="@drawable/logo" />
 
     <!--<TextView
         android:id="@+id/Logo_text"
