@@ -7,9 +7,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
@@ -108,6 +111,28 @@ public class DashboardFirstActivity extends AppCompatActivity {
         });
     }
 
-}
+    public void getTabs() {
+        final ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                viewPagerAdapter.addFragment(CategoryFirst.getInstance(), "CATEGORY 1");
+                viewPagerAdapter.addFragment(CategorySecond.getInstance(), "CATEGORY 2");
+                viewPagerAdapter.addFragment(CategoryThird.getInstance(), "CATEGORY 3");
+                viewPager.setAdapter(viewPagerAdapter);
+                tabLayout.setupWithViewPager(viewPager);
+            }
+        });
+
+    }
+
+    private void loadFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame, fragment).commit();
+        drawerLayout.closeDrawer(GravityCompat.START);
+        fragmentTransaction.addToBackStack(null);
+    }
 
 }
