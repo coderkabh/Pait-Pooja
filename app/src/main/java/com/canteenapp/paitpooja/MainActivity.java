@@ -35,5 +35,9 @@ public class MainActivity extends AppCompatActivity {
         logo = findViewById(R.id.textView);
         slogan = findViewById(R.id.textView2);
 
+        image.setAnimation(topAnim);
+        logo.setAnimation(bottomAnim);
+        slogan.setAnimation(bottomAnim);
+
     }
 }
