@@ -1,13 +1,16 @@
 package com.canteenapp.paitpooja.dashboard;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.WindowManager;
 
 import com.canteenapp.paitpooja.R;
@@ -46,6 +49,65 @@ public class DashboardFirstActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
+        fragment = new HomeFragment();
+        loadFragment(fragment);
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        fragment = new HomeFragment();
+                        loadFragment(fragment);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.profile:
+                        fragment = new ProfileFragment();
+                        loadFragment(fragment);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.history:
+                        fragment = new HistoryFragment();
+                        loadFragment(fragment);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.share:
+                        fragment = new ShareFragment();
+                        loadFragment(fragment);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.rating:
+                        fragment = new RateThisAppFragment();
+                        loadFragment(fragment);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.settings:
+                        fragment = new SettingsFragment();
+                        loadFragment(fragment);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.logout:
+                        fragment = new LogoutFragment();
+                        loadFragment(fragment);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.privacy:
+                        fragment = new PrivacyPolicyFragment();
+                        loadFragment(fragment);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.terms:
+                        fragment = new TermsAndConditionsFragment();
+                        loadFragment(fragment);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                }
+                return true;
+            }
+        });
     }
+
+}
 
 }
