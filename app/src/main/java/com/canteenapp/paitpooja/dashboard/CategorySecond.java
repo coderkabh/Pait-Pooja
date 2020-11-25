@@ -12,9 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Adapters.RecipeAdapter;
-import com.example.myapplication.Models.RecipeModel;
-import com.example.myapplication.R;
+import com.canteenapp.paitpooja.Adapters.RecipeAdapter;
+import com.canteenapp.paitpooja.Models.RecipeModel;
+import com.canteenapp.paitpooja.R;
 
 import java.util.ArrayList;
 

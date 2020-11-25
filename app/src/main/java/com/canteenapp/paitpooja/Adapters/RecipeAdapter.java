@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.viewHolder>{
 
-    ArrayList<RecipeAdapter>list;
+    ArrayList<RecipeModel>list;
     Context context;
 
     public RecipeAdapter(ArrayList<RecipeModel> list, Context context) {
