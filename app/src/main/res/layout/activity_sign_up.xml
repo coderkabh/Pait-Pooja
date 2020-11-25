@@ -16,7 +16,7 @@
         android:layout_height="100dp"
         android:src="@drawable/logo" />
 
-    <!--<TextView
+    <TextView
         android:id="@+id/Logo_text"
         android:transitionName="logo_text_trans"
         android:layout_width="wrap_content"
@@ -27,10 +27,10 @@
         android:text="Welcome"
         android:textColor="#fff"
         android:textSize="40sp"
-        android:layout_gravity="right" />-->
+        android:layout_gravity="right" />
 
 
-    <!--<LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -130,7 +130,7 @@
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>-->
+    </LinearLayout>
 
    <!-- <LinearLayout
         android:layout_width="match_parent"
