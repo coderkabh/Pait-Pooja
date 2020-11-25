@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.canteenapp.paitpooja.dashboard.DashboardFirstActivity;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -86,5 +87,47 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+    }
+
+    private Boolean validatePhoneNumber() {
+        String val4 = regPhoneNumber.getEditText().getText().toString();
+        String mobileVal = "^(?:(?:\\+|0{0,2})91(\\s*[\\ -]\\s*)?|[0]?)?[6789]\\d{9}|(\\d[ -]?){10}\\d$";
+
+        if (val4.isEmpty()) {
+            regPhoneNumber.setError("Field cannot be empty");
+            return false;
+        }
+        else if(!val4.matches(mobileVal)) {
+            regPhoneNumber.setError("Wrong Phone Number");
+            return false;
+        }
+        else {
+            regPhoneNumber.setError(null);
+            return true;
+        }
+    }
+
+    private Boolean validatePassword() {
+        String val5 = regPassword.getEditText().getText().toString();
+        String passwordVal = "^" + "(?=.*[a-zA-Z])" + "(?=.*[@#$%^&+=])" + "(?=\\S+$)" + ".{4,}" + "$";
+
+        if (val5.isEmpty()) {
+            regPassword.setError("Field cannot be empty");
+            return false;
+        }
+        else if(!val5.matches(passwordVal)) {
+            regPassword.setError("Password is too weak ");
+            return false;
+        }
+        else {
+            regPassword.setError(null);
+            return true;
+        }
+
+    }
+
+    public void loginUser(View view) {
+        startActivity(new Intent(getApplicationContext(),Login.class));
+        finish();
     }
 }
