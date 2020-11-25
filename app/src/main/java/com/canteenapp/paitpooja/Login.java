@@ -33,4 +33,31 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password_box);
         loginBtn = findViewById(R.id.loginBtn);
     }
+
+    private Boolean validateRollNumber() {
+        String val = rollNumber.getEditText().getText().toString();
+
+        if(val.length()!=9) {
+            rollNumber.setError("Invalid Roll Number");
+            return false;
+        }
+        else {
+            rollNumber.setError(null);
+            rollNumber.setErrorEnabled(false);
+            return true;
+        }
+    }
+
+    private Boolean validatePassword() {
+        String val = password.getEditText().getText().toString();
+
+        if (val.isEmpty()) {
+            password.setError("Field cannot be empty");
+            return false;
+        } else {
+            password.setError(null);
+            return true;
+        }
+
+    }
 }
