@@ -140,7 +140,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="15dp">
 
-               <TextView
+        <!--       <TextView
                    android:layout_width="170dp"
                    android:layout_height="50dp"
                    android:id="@+id/spinnerText"
@@ -151,7 +151,7 @@
                    android:textSize="20dp"
                    android:paddingLeft="10dp"
                    android:paddingTop="20dp"
-                   />
+                   />-->
 
         <Spinner
             android:id="@+id/spinnerGender"
